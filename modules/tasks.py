@@ -6,7 +6,7 @@ class Tasks:
     def is_running(executable_name: str) -> Union[str, bool]:
         try:
             for process in psutil.process_iter():
-                if process.name() == "Exodus.exe" and process.status() == "running":
+                if process.name() == executable_name and process.status() == "running":
                     return True
                 else:
                     continue
