@@ -16,7 +16,7 @@ class Tasks:
         try:
             for process in psutil.process_iter():
                 if executable_name.endswith(".exe") == True:
-                    if process.name() == f"{executable_name}.exe" and process.status() == "running":
+                    if process.name() == f"{executable_name}" and process.status() == "running":
                         found_exodus: bool = True; return True
                     else:
                         continue
