@@ -11,5 +11,7 @@ class Tasks:
                 else:
                     continue
                 
+            return False
+                
         except Exception as error:
             return error
