@@ -13,7 +13,8 @@ class Tasks:
                 else:
                     continue
                 
-            return False
+            if found_exodus == False:
+                return False
                 
         except Exception as error:
             return error
